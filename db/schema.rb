@@ -10,6 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_09_05_130042) do
+
+  create_table "messages", force: :cascade do |t|
+    t.string "text"
+    t.integer "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_messages_on_task_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "name", default: ""
+    t.string "body", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
