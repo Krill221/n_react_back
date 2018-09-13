@@ -1,0 +1,26 @@
+import React from 'react';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo"
+import { BrowserRouter, Route } from 'react-router-dom'
+
+import TaskPage from './TaskPage';
+
+
+
+
+const client = new ApolloClient({
+  uri: "http://0.0.0.0:3000/graphql"
+});
+
+
+export default class App extends React.Component {
+
+  render() {
+    return (<ApolloProvider client={client}>
+            <BrowserRouter>
+                <Route path="/" component={TaskPage}/>
+            </BrowserRouter>
+      </ApolloProvider>
+    );
+  }
+}

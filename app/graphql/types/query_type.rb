@@ -4,7 +4,7 @@ module Types
     field :tasks, [Types::TaskType], null: false,
       description: "tasks"
     def tasks
-      return Task.all
+      return Task.all.order(:id => :desc)
     end
 
     field :task, Types::TaskType, null: true do
