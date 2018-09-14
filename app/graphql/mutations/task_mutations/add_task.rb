@@ -8,8 +8,9 @@ module Mutations
     field :task, Types::TaskType, null: true
 
     def resolve(name:, body:)
-     task = Task.create!(name: name, body: body)
-     { task: task }
+      hex = 'task' + SecureRandom.hex(6)
+      task = Task.create!(name: name, body: body, uuid: hex)
+      { task: task }
     rescue ActiveRecord::RecordInvalid => e
      GraphQL::ExecutionError.new("Invalid input: #{e.record.errors.full_messages.join(', ')}")
     end

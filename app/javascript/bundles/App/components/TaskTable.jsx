@@ -27,7 +27,7 @@ export default class TaskTable extends React.Component {
                                 <td>{task.id}</td>
                                 <td>{task.name}</td>
                                 <td>{task.body}</td>
-                                <td><QRCode value={task.body} /></td>
+                                <td><QRCode value={task.uuid} /></td>
                   </tr>
                 ) )}</tbody></Table>
       }}

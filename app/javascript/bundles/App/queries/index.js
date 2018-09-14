@@ -5,6 +5,7 @@ export const GET_TASKS = gql`{
       id
       name
       body
+      uuid
     }
 }`;
 
@@ -15,6 +16,7 @@ export const GET_TASK = gql`
       id
       name
       body
+      uuid
     }
   }`;
 
@@ -36,6 +38,7 @@ export const GET_TASK = gql`
           id
           name
           body
+          uuid
         }
       }
     }

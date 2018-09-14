@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_130042) do
+ActiveRecord::Schema.define(version: 2018_09_14_102643) do
 
   create_table "messages", force: :cascade do |t|
     t.string "text"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_09_05_130042) do
     t.string "body", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid", default: ""
   end
 
 end
