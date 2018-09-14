@@ -7,6 +7,13 @@ module Types
       return Task.all.order(:id => :desc)
     end
 
+    field :tasks_by_user, [Types::TaskType], null: false,
+      description: "tasksByUser"
+    def tasks_by_user
+      current_user_id = 1
+      return User.find(current_user_id).tasks.order(:id => :desc)
+    end
+
     field :task, Types::TaskType, null: true do
       argument :id, ID, required: true
     end

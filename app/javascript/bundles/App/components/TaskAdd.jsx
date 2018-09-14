@@ -32,7 +32,7 @@ export default class TaskAdd extends React.Component {
                     value={this.state.body}
                    />
                 </FormGroup>
-                <Button onClick={() => {
+                <Button bsStyle="success" onClick={() => {
                     addTask({ variables:{
                       name: this.state.name,
                       body: this.state.body
