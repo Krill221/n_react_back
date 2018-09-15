@@ -28,5 +28,16 @@ module Types
       return Message.where :task_id => taskid
     end
 
+    # AUTH
+    field :current_user_token, String, null: false,
+      description: 'fetch the current user token.'
+    def current_user_token
+      unless context[:session].nil?
+       context[:session][:token].to_s
+     else
+       ''
+     end
+    end
+
   end
 end

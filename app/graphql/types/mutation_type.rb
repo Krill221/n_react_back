@@ -5,5 +5,12 @@ module Types
     field :addTask, mutation: Mutations::TaskMutations::AddTask
     field :addMessage, mutation: Mutations::TaskMutations::AddMessage
     field :updateTask, mutation: Mutations::TaskMutations::UpdateTask
+
+    # AUTH
+    field :singInVk, mutation: Mutations::UserMutations::SingInVk
+    field :singInFacebook, mutation: Mutations::UserMutations::SingInFacebook
+    field :singOut, mutation: Mutations::UserMutations::SingOut
+    field :singIn, mutation: Mutations::UserMutations::SingIn
+    field :singUp, mutation: Mutations::UserMutations::SingUp
   end
 end
