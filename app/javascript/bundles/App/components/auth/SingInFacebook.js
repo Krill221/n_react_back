@@ -1,10 +1,9 @@
 import React from 'react';
-import FacebookLogin from 'react-facebook-login';
+//import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import {Mutation} from 'react-apollo';
 import {ApolloConsumer} from "react-apollo";
 import {SING_IN_FACEBOOK, CURRENT_USER_TOKEN} from "../../queries/auth";
-
-
 
 class SingInFacebook extends React.Component {
 
@@ -38,7 +37,9 @@ class SingInFacebook extends React.Component {
         autoLoad={false}
         fields="name,email,picture"
         onClick={this.componentClicked}
-        callback={this.responseFacebook} />);
+        callback={this.responseFacebook}
+        render={renderProps => (<button onClick={renderProps.onClick}>LOGIN WITH FB</button>
+  )} />);
 
     if(this.state.isLoggedIn){
         fbContent = (<ApolloConsumer>
@@ -47,7 +48,8 @@ class SingInFacebook extends React.Component {
               variables: { facebooktoken: this.state.accessToken },
               refetchQueries: [{query: CURRENT_USER_TOKEN}]
             })
-            return <div>{this.state.name}</div>;
+            //return <div>{this.state.name}</div>;
+            return <div>fb</div>;
           }}
         </ApolloConsumer>)
     }

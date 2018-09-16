@@ -3,7 +3,7 @@ import {Mutation} from 'react-apollo';
 import {SING_OUT, CURRENT_USER_TOKEN} from "../../queries/auth";
 
 
-const SingOut = () => {
+const SingOutServer = () => {
   return (
     <Mutation mutation={SING_OUT} refetchQueries={[{query: CURRENT_USER_TOKEN}]}>
       { (SingOut) => (
@@ -17,4 +17,4 @@ const SingOut = () => {
   );
 };
 
-export default SingOut
+export default SingOutServer

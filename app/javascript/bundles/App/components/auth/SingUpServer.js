@@ -2,7 +2,7 @@ import React from 'react';
 import {Mutation} from 'react-apollo';
 import {SING_UP} from '../../queries/auth';
 
-const SingUp = () => {
+const SingUpServer = () => {
   let input_name;
   let input_email;
   let input_password;
@@ -23,4 +23,4 @@ const SingUp = () => {
   );
 };
 
-export default SingUp
+export default SingUpServer

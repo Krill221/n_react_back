@@ -2,7 +2,7 @@ import React from 'react';
 import {Mutation} from 'react-apollo';
 import {SING_IN, CURRENT_USER_TOKEN} from "../../queries/auth";
 
-const SingIn = () => {
+const SingInServer = () => {
   let input_email;
   let input_password;
 
@@ -21,4 +21,4 @@ const SingIn = () => {
   );
 };
 
-export default SingIn
+export default SingInServer

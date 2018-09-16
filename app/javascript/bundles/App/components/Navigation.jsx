@@ -8,7 +8,7 @@ import { Button, Grid, Col, code, Row,
   PageHeader,
   Container
 } from 'react-bootstrap';
-import Panel from './auth/Panel';
+import AuthPanel from './auth/AuthPanel';
 
 
 export default class Navigation extends React.Component {
@@ -21,10 +21,7 @@ export default class Navigation extends React.Component {
                 </Navbar.Brand>
               </Navbar.Header>
             </Navbar>
-            <PageHeader>
-                INDEX PAGE
-            </PageHeader>
-            <div><Panel/></div>
+            <AuthPanel/>
             </div>
           );
   }

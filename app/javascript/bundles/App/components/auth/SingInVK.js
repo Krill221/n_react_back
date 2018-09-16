@@ -39,7 +39,6 @@ class SingInVK extends React.Component {
       LOGIN WITH VK
     </VkAuth>);
 
-
     if(this.state.isLoggedIn){
         let strvk = "expire="+this.state.expire+"mid="+this.state.userId+"secret="+this.state.secret+"sid="+this.state.sid
         //console.log(strvk);
@@ -49,10 +48,9 @@ class SingInVK extends React.Component {
             client.mutate({ mutation: SING_IN_VK,
               variables: { name: this.state.name, domain: this.state.domain,  strvk: strvk, sig: this.state.sig },
               refetchQueries: [{query: CURRENT_USER_TOKEN}]
-            }).then(console.log);
-            return <div>
-              <div>{this.state.name}</div>
-            </div>;
+            });
+            //return <div>{this.state.name}</div>;
+            return <div>vk</div>;
           }}
         </ApolloConsumer>)
     }
