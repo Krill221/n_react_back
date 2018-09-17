@@ -10,8 +10,9 @@ module Types
     field :tasks_by_user, [Types::TaskType], null: false,
       description: "tasksByUser"
     def tasks_by_user
-      current_user_id = 1
-      return User.find(current_user_id).tasks.order(:id => :desc)
+      return [] if context[:session][:token].nil?
+      user = User.find_by_token context[:session][:token]
+      return user.tasks.order(:id => :desc)
     end
 
     field :task, Types::TaskType, null: true do

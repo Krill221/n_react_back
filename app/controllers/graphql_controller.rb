@@ -25,10 +25,10 @@ class GraphqlController < ApplicationController
     return unless session[:token]
 
     # For Ruby on Rails >=5.2.x use:
-    crypt = ActiveSupport::MessageEncryptor.new("iliketomoveitiliketomoveitiliketomoveitiliketomoveitiliketomoveitiliketomoveitiliketomoveit".byteslice(0..31))
-    token = crypt.decrypt_and_verify session[:token]
-    user_id = token.gsub('user-id:', '').to_i
-    User.find_by id: user_id
+    #crypt = ActiveSupport::MessageEncryptor.new("iliketomoveitiliketomoveitiliketomoveitiliketomoveitiliketomoveitiliketomoveitiliketomoveit".byteslice(0..31))
+    #token = crypt.decrypt_and_verify session[:token]
+    #user_id = token.gsub('user-id:', '').to_i
+    User.find_by_token session[:token]
   rescue ActiveSupport::MessageVerifier::InvalidSignature
     nil
   end

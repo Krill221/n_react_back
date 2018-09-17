@@ -7,10 +7,11 @@ module Mutations
     field :task, Types::TaskType, null: true
 
     def resolve(uuid:)
-      current_user_id = 1
+      return null if context[:session][:token].nil?
+      user = User.find_by_token context[:session][:token]
       task = Task.find_by_uuid(uuid)
-      unless task.users.exists? current_user_id
-        task.users << User.find(current_user_id)
+      unless task.users.exists? user.id
+        task.users << user
       end
 
       { task: task }

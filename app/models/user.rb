@@ -14,4 +14,12 @@ class User < ApplicationRecord
     token = crypt.encrypt_and_sign("user-id"+self.id.to_s)
     return token
   end
+
+  def self.find_by_token token
+    crypt = ActiveSupport::MessageEncryptor.new("iliketomoveitiliketomoveitiliketomoveitiliketomoveitiliketomoveitiliketomoveitiliketomoveit".byteslice(0..31))
+    res = crypt.decrypt_and_verify token
+    user_id = res.gsub('user-id', '').to_i
+    return User.find_by id: user_id
+  end
+
 end

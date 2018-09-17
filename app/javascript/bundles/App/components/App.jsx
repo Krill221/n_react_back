@@ -9,9 +9,7 @@ import TaskPage from './TaskPage';
 
 
 const client = new ApolloClient({
-  //uri: "http://localhost:3000/graphql"
-  uri: "http://192.168.0.103:3000/graphql"
-
+  uri: "http://0.0.0.0:3000/graphql"
 });
 
 

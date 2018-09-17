@@ -9,6 +9,18 @@ export const GET_TASKS = gql`{
     }
 }`;
 
+/*
+export const GET_TASKS = gql`{
+    tasksByUser {
+      id
+      name
+      body
+      uuid
+    }
+}`;
+
+*/
+
 
 export const GET_TASK = gql`
   query Task($id: ID!) {
