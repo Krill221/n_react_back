@@ -7,10 +7,11 @@ module Mutations
     field :task, Types::TaskType, null: true
 
     def resolve(uuid:)
-      current_user_id = 1
+      return null if context[:session][:token].nil?
+      user = User.find_by_token context[:session][:token]
       task = Task.find_by_uuid(uuid)
-      if task.users.exists? current_user_id
-        Subscription.where(:task_id => task.id, :user_id => current_user_id).first.delete
+      if task.users.exists? user.id
+        Subscription.where(:task_id => task.id, :user_id => user.id).first.delete
       end
 
       { task: task }
