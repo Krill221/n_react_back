@@ -40,5 +40,14 @@ module Types
      end
     end
 
+    # PUSH
+    field :current_user_expo_push_token, String, null: false,
+      description: 'get push state'
+    def current_user_expo_push_token
+      return [] if context[:session][:token].nil?
+      user = User.find_by_token context[:session][:token]
+      return user.expo_push_token
+    end
+
   end
 end

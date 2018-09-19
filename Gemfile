@@ -64,3 +64,5 @@ gem 'graphiql-rails', group: :development
 gem "bcrypt", "~> 3.1"
 
 gem "koala", "~> 3.0"
+
+gem "exponent-server-sdk", "~> 0.0.5"
