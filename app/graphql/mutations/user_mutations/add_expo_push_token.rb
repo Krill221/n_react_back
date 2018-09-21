@@ -3,17 +3,15 @@ module Mutations
 
     argument :expopushtoken, String, required: true
 
-    field :token, String, null: false
-
+    field :current_expo_push_token_state, Boolean, null: false
     def resolve(expopushtoken:)
-      # basic validation
-      return if expopushtoken.nil?
-
+      return {current_expo_push_token_state: false} if expopushtoken.nil?
       user = User.find_by_token context[:session][:token]
+      return {current_expo_push_token_state: false} if user.nil?
       user.expo_push_token = expopushtoken
       user.save!
 
-      return {token: expopushtoken }
+      return {current_expo_push_token_state: (expopushtoken != '')}
     rescue ActiveRecord::RecordInvalid => e
       GraphQL::ExecutionError.new("Invalid input: #{e.record.errors.full_messages.join(', ')}")
     end

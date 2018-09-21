@@ -4,6 +4,10 @@ export const CURRENT_USER_TOKEN = gql`{
     currentUserToken
 }`
 
+export const CURRENT_EXPO_PUSH_TOKEN_STATE = gql`{
+    currentExpoPushTokenState
+}`;
+
 
 export const SING_IN = gql`
 mutation SingIn($email: String!, $password: String!) {

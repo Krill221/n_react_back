@@ -3,6 +3,7 @@ class GraphqlController < ApplicationController
 
 
   def execute
+    sleep 5
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
