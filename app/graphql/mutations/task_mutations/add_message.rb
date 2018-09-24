@@ -2,13 +2,15 @@ module Mutations
   class TaskMutations::AddMessage < GraphQL::Schema::RelayClassicMutation
 
     argument :taskid, ID, required: true
+    argument :contenttype, String, required: true
     argument :text, String, required: true
 
     ## return
     field :message, Types::MessageType, null: true
 
-    def resolve(taskid:, text:)
-     message = Message.create!(text: text, task_id: taskid)
+    def resolve(taskid:, contenttype:, text:)
+     message = Message.create!(text: text,
+        contenttype: contenttype, task_id: taskid)
 
      # send push to all subscribed users
      current_user = User.find_by_token context[:session][:token]
