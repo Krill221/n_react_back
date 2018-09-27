@@ -6,12 +6,17 @@ module Mutations
     argument :text, String, required: true
 
     ## return
-    field :message, Types::MessageType, null: true
+    #field :message, Types::MessageType, null: true
+    field :id, ID, null: false
+    field :contenttype, String, null: false
+    field :text, String, null: false
+    field :task_id, ID, null: false
 
     def resolve(taskid:, contenttype:, text:)
-     message = Message.create!(text: text,
-        contenttype: contenttype, task_id: taskid)
-
+     message = Message.create!(text: text, contenttype: contenttype, task_id: taskid)
+     if context[:session][:token].nil?
+       raise "user token is nil"
+     end
      # send push to all subscribed users
      current_user = User.find_by_token context[:session][:token]
      Task.find(taskid).users.each do |user|
@@ -27,7 +32,12 @@ module Mutations
          expo_push.publish messages
        end
      end
-     { message: message }
+     {
+       id: message.id,
+       contenttype: message.contenttype,
+       text: message.text,
+       task_id: message.task_id
+     }
     rescue ActiveRecord::RecordInvalid => e
      GraphQL::ExecutionError.new("Invalid input: #{e.record.errors.full_messages.join(', ')}")
     end

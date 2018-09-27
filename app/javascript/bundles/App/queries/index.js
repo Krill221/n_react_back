@@ -68,11 +68,9 @@ export const GET_TASK = gql`
   export const ADD_MESSAGE = gql`
     mutation addMessage($taskid: ID!, $text: String!) {
       addMessage(input: {taskid: $taskid, text: $text}){
-        message {
           id
           text
           taskId
-        }
       }
     }
   `;
