@@ -16,9 +16,10 @@ module Mutations
     field :onserver, String, null: false
 
     def resolve(taskid:, contenttype:, text:, tempimg:, onserver:)
-     if tempimg != ''
-       message = Message.where(:text => tempimg).first
-       message.text = tempimg
+     if tempimg != '' && contenttype == 'img'
+       p 'update img ' + text
+       message = Message.find_by_text(tempimg)
+       message.text = text
        message.save!
      else
        message = Message.create!(text: text, contenttype: contenttype, task_id: taskid)
