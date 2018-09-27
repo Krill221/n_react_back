@@ -1,6 +1,5 @@
 module Types
   class MutationType < Types::BaseObject
-
     field :unsubscribeTask, mutation: Mutations::TaskMutations::UnsubscribeTask
     field :subscribeToTask, mutation: Mutations::TaskMutations::SubscribeToTask
     field :addTask, mutation: Mutations::TaskMutations::AddTask
@@ -16,6 +15,6 @@ module Types
     field :singOut, mutation: Mutations::UserMutations::SingOut
     field :singIn, mutation: Mutations::UserMutations::SingIn
     field :singUp, mutation: Mutations::UserMutations::SingUp
-    
+
   end
 end

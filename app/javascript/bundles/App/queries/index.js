@@ -61,16 +61,21 @@ export const GET_TASK = gql`
     query Messages($taskid: ID!)  {
       messages(taskid: $taskid) {
         id
+        contenttype
         text
+        taskId
+        onserver
       }
   }`;
 
   export const ADD_MESSAGE = gql`
-    mutation addMessage($taskid: ID!, $text: String!) {
-      addMessage(input: {taskid: $taskid, text: $text}){
-          id
-          text
-          taskId
+  mutation addMessage($taskid: ID!, $contenttype: String!, $text: String!, $tempimg: String!,  $onserver: String!) {
+    addMessage(input: {taskid: $taskid, contenttype: $contenttype, text: $text, tempimg: $tempimg, onserver: $onserver}){
+        id
+        contenttype
+        text
+        taskId
+        onserver
       }
     }
   `;

@@ -4,6 +4,8 @@ module Mutations
     argument :taskid, ID, required: true
     argument :contenttype, String, required: true
     argument :text, String, required: true
+    argument :onserver, String, required: true
+    argument :tempimg, String, required: true
 
     ## return
     #field :message, Types::MessageType, null: true
@@ -11,9 +13,16 @@ module Mutations
     field :contenttype, String, null: false
     field :text, String, null: false
     field :task_id, ID, null: false
+    field :onserver, String, null: false
 
-    def resolve(taskid:, contenttype:, text:)
-     message = Message.create!(text: text, contenttype: contenttype, task_id: taskid)
+    def resolve(taskid:, contenttype:, text:, tempimg:, onserver:)
+     if tempimg != ''
+       message = Message.where(:text => tempimg).first
+       message.text = tempimg
+       message.save!
+     else
+       message = Message.create!(text: text, contenttype: contenttype, task_id: taskid)
+     end
      if context[:session][:token].nil?
        raise "user token is nil"
      end
@@ -36,7 +45,8 @@ module Mutations
        id: message.id,
        contenttype: message.contenttype,
        text: message.text,
-       task_id: message.task_id
+       task_id: message.task_id,
+       onserver: message.onserver.to_s
      }
     rescue ActiveRecord::RecordInvalid => e
      GraphQL::ExecutionError.new("Invalid input: #{e.record.errors.full_messages.join(', ')}")

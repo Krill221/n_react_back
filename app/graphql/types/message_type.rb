@@ -4,5 +4,6 @@ module Types
     field :contenttype, String, null: false
     field :text, String, null: false
     field :task_id, ID, null: false
+    field :onserver, String, null: false
   end
 end

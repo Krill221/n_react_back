@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_113642) do
+ActiveRecord::Schema.define(version: 2018_09_27_115946) do
 
   create_table "messages", force: :cascade do |t|
     t.string "text"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_09_24_113642) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "contenttype", default: "txt"
+    t.boolean "onserver", default: true
     t.index ["task_id"], name: "index_messages_on_task_id"
   end
 
