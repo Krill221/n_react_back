@@ -65,17 +65,19 @@ export const GET_TASK = gql`
         text
         taskId
         onserver
+        createdAt
       }
   }`;
 
   export const ADD_MESSAGE = gql`
-  mutation addMessage($taskid: ID!, $contenttype: String!, $text: String!, $tempimg: String!,  $onserver: String!) {
+  mutation addMessage($taskid: ID!, $contenttype: String!, $text: String!, $tempimg: String!, $onserver: String!) {
     addMessage(input: {taskid: $taskid, contenttype: $contenttype, text: $text, tempimg: $tempimg, onserver: $onserver}){
         id
         contenttype
         text
         taskId
         onserver
+        createdAt
       }
     }
   `;

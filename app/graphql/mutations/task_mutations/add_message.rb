@@ -14,6 +14,8 @@ module Mutations
     field :text, String, null: false
     field :task_id, ID, null: false
     field :onserver, String, null: false
+    field :created_at, String, null: false
+
 
     def resolve(taskid:, contenttype:, text:, tempimg:, onserver:)
      if tempimg != '' && contenttype == 'img'
@@ -47,7 +49,8 @@ module Mutations
        contenttype: message.contenttype,
        text: message.text,
        task_id: message.task_id,
-       onserver: message.onserver.to_s
+       onserver: message.onserver.to_s,
+       created_at: message.created_at.strftime("%H:%M")
      }
     rescue ActiveRecord::RecordInvalid => e
      GraphQL::ExecutionError.new("Invalid input: #{e.record.errors.full_messages.join(', ')}")
