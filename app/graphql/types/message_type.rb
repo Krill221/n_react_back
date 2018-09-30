@@ -5,6 +5,6 @@ module Types
     field :text, String, null: false
     field :task_id, ID, null: false
     field :onserver, String, null: false
-    field :created_at, String, null: false
+    field :time, String, null: false
   end
 end

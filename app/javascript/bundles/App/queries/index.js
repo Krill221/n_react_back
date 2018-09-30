@@ -65,7 +65,7 @@ export const GET_TASK = gql`
         text
         taskId
         onserver
-        createdAt
+        time
       }
   }`;
 
@@ -77,7 +77,7 @@ export const GET_TASK = gql`
         text
         taskId
         onserver
-        createdAt
+        time
       }
     }
   `;
