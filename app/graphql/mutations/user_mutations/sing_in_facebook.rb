@@ -20,7 +20,7 @@ module Mutations
             )
           end
 
-          token = user.generate_access_token
+          token = user.id
           context[:session][:token] = token
 
           return { token: token }

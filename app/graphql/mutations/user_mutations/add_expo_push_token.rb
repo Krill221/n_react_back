@@ -6,7 +6,7 @@ module Mutations
     field :current_expo_push_token_state, Boolean, null: false
     def resolve(expopushtoken:)
       return {current_expo_push_token_state: false} if expopushtoken.nil?
-      user = User.find_by_token context[:session][:token]
+      user = User.find context[:session][:token]
       return {current_expo_push_token_state: false} if user.nil?
       user.expo_push_token = expopushtoken
       user.save!

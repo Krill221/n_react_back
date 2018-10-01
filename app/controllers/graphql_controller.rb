@@ -29,7 +29,7 @@ class GraphqlController < ApplicationController
     #crypt = ActiveSupport::MessageEncryptor.new("iliketomoveitiliketomoveitiliketomoveitiliketomoveitiliketomoveitiliketomoveitiliketomoveit".byteslice(0..31))
     #token = crypt.decrypt_and_verify session[:token]
     #user_id = token.gsub('user-id:', '').to_i
-    User.find_by_token session[:token]
+    User.find session[:token]
   rescue ActiveSupport::MessageVerifier::InvalidSignature
     nil
   end

@@ -23,7 +23,7 @@ module Mutations
       return unless user
       return unless user.authenticate(password)
 
-      token = user.generate_access_token
+      token = user.id
       context[:session][:token] = token
 
       return {user: user, token: token }

@@ -8,7 +8,7 @@ module Mutations
 
     def resolve(uuid:)
       return null if context[:session][:token].nil?
-      user = User.find_by_token context[:session][:token]
+      user = User.find context[:session][:token]
       task = Task.find_by_uuid(uuid)
       if task.users.exists? user.id
         Subscription.where(:task_id => task.id, :user_id => user.id).first.delete

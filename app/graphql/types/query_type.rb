@@ -11,7 +11,7 @@ module Types
       description: "tasksByUser"
     def tasks_by_user
       return [] if context[:session][:token].nil?
-      user = User.find_by_token context[:session][:token]
+      user = User.find context[:session][:token]
       return user.tasks.order(:id => :desc)
     end
 
@@ -26,7 +26,7 @@ module Types
       argument :taskid, ID, required: true
     end
     def messages(taskid:)
-      return Message.where :task_id => taskid
+      return Message.where(:task_id => taskid).order(:created_at => :asc)
     end
 
     # AUTH
@@ -45,7 +45,7 @@ module Types
       description: 'get current_user_expo_push_token'
     def current_user_expo_push_token
       return '' if context[:session][:token].nil?
-      user = User.find_by_token context[:session][:token]
+      user = User.find context[:session][:token]
       return '' if user.nil?
       return user.expo_push_token
     end
@@ -55,7 +55,7 @@ module Types
       description: 'get expo push state'
     def current_expo_push_token_state
       return false if context[:session][:token].nil?
-      user = User.find_by_token context[:session][:token]
+      user = User.find context[:session][:token]
       return false if user.nil?
       return user.expo_push_token != ''
     end

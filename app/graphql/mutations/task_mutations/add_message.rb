@@ -33,7 +33,7 @@ module Mutations
      end
 
      # send push to all subscribed users
-     current_user = User.find_by_token context[:session][:token]
+     current_user = User.find context[:session][:token]
      Task.find(taskid).users.each do |user|
        #if user.id != current_user.id && user.expo_push_token != '' &&
        #  user.expo_push_token != current_user.expo_push_token
