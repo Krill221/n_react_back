@@ -15,10 +15,15 @@ module Mutations
     field :task_id, ID, null: false
     field :onserver, String, null: false
     field :time, String, null: false
+    field :user, Types::UserType, null: false
 
 
     def resolve(taskid:, contenttype:, text:, tempimg:, onserver:)
       raise "user token is nil" if context[:session][:token].nil?
+
+
+      #current_user = User.find context[:session][:token]
+      current_user = User.find(1)
 
      if tempimg != '' && contenttype == 'img' ## Update photo url
        message = Message.find_by_text(tempimg)
@@ -28,12 +33,12 @@ module Mutations
        message = Message.create!(text: text,
         contenttype: contenttype,
         task_id: taskid,
-        time: Time.now.strftime("%H:%M")
+        time: Time.now.strftime("%H:%M"),
+        user_id: current_user.id
       )
      end
 
      # send push to all subscribed users
-     current_user = User.find context[:session][:token]
      Task.find(taskid).users.each do |user|
        #if user.id != current_user.id && user.expo_push_token != '' &&
        #  user.expo_push_token != current_user.expo_push_token
@@ -53,7 +58,8 @@ module Mutations
        text: message.text,
        task_id: message.task_id,
        onserver: message.onserver.to_s,
-       time: message.created_at.strftime("%H:%M")
+       time: message.created_at.strftime("%H:%M"),
+       user: current_user
      }
     rescue ActiveRecord::RecordInvalid => e
      GraphQL::ExecutionError.new("Invalid input: #{e.record.errors.full_messages.join(', ')}")

@@ -5,4 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(name: "test", email: "test@test.com")
+u = User.create(name: "22", email: "22", password: "22")
+t = Task.create!(name: 'task1', body: 'body', uuid: ('task' + SecureRandom.hex(6)) )
+unless t.users.exists? u.id
+t.users << u
+end
+Message.create!(text: "hello", contenttype: "txt", task_id: 1,
+   time: Time.now.strftime("%H:%M"), user_id: 1 )

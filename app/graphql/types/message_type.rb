@@ -6,7 +6,6 @@ module Types
     field :task_id, ID, null: false
     field :onserver, String, null: false
     field :time, String, null: false
-    field :user_name, String, null: false
-    field :user_id, ID, null: false
+    field :user, Types::UserType, null: false
   end
 end

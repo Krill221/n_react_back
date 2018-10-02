@@ -66,8 +66,10 @@ export const GET_TASK = gql`
         taskId
         onserver
         time
-        userId
-        userName
+        user {
+          id
+          name
+        }
       }
   }`;
 
@@ -80,8 +82,10 @@ export const GET_TASK = gql`
         taskId
         onserver
         time
-        userId
-        userName
+        user {
+          id
+          name
+        }
       }
     }
   `;
