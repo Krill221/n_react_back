@@ -22,8 +22,7 @@ module Mutations
       raise "user token is nil" if context[:session][:token].nil?
 
 
-      #current_user = User.find context[:session][:token]
-      current_user = User.find(1)
+      current_user = User.find context[:session][:token]
 
      if tempimg != '' && contenttype == 'img' ## Update photo url
        message = Message.find_by_text(tempimg)
