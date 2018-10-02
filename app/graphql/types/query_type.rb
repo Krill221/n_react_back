@@ -26,7 +26,9 @@ module Types
       argument :taskid, ID, required: true
     end
     def messages(taskid:)
-      return Message.where(:task_id => taskid).order(:created_at => :asc)
+      return Message.joins(:user)
+              .select("users.id, users.name as user_name, messages.*")
+              .where(:task_id => taskid).order(:created_at => :asc)
     end
 
     # AUTH

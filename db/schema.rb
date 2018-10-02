@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_29_075519) do
+ActiveRecord::Schema.define(version: 2018_10_02_073202) do
 
   create_table "messages", force: :cascade do |t|
     t.string "text"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 2018_09_29_075519) do
     t.string "contenttype", default: "txt"
     t.boolean "onserver", default: true
     t.string "time", default: ""
+    t.integer "user_id"
     t.index ["task_id"], name: "index_messages_on_task_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
