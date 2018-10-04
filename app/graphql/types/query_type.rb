@@ -22,6 +22,15 @@ module Types
       return Task.find id
     end
 
+    field :task_images, [Types::MessageType], null: true do
+      argument :taskid, ID, required: true
+    end
+    def task_images(taskid:)
+      return Message.where(:task_id => taskid)
+                .where(:contenttype => 'img')
+                .order(:created_at => :asc)
+    end
+
     field :messages, [Types::MessageType], null: true do
       argument :taskid, ID, required: true
     end
