@@ -35,7 +35,15 @@ module Types
       argument :taskid, ID, required: true
     end
     def messages(taskid:)
-      return Message.joins(:user).where(:task_id => taskid).order(:created_at => :asc)
+      return Message.joins(:user).eager_load(:user).where(:task_id => taskid).order(:created_at => :asc)
+    end
+
+
+    # AUTH
+    field :current_user, Types::UserType, null: false,
+      description: 'fetch the current user.'
+    def current_user
+      return User.find context[:session][:token]
     end
 
     # AUTH
