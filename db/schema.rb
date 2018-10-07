@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_073202) do
+ActiveRecord::Schema.define(version: 2018_10_07_183914) do
 
   create_table "messages", force: :cascade do |t|
     t.string "text"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2018_10_02_073202) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "expo_push_token", default: ""
+    t.string "image", default: ""
   end
 
 end
