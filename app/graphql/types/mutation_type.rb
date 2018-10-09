@@ -6,6 +6,8 @@ module Types
     field :addTask, mutation: Mutations::TaskMutations::AddTask
     field :addMessage, mutation: Mutations::TaskMutations::AddMessage
     field :updateTask, mutation: Mutations::TaskMutations::UpdateTask
+    field :addImage, mutation: Mutations::TaskMutations::AddImage
+
 
     # PUSH
     field :addExpoPushToken, mutation: Mutations::UserMutations::AddExpoPushToken

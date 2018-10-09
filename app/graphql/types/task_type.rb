@@ -5,5 +5,6 @@ module Types
     field :body, String, null: false
     field :uuid, String, null: false
     field :users, [Types::UserType], null: false
+    field :images, [Types::ImageType], null: false
   end
 end

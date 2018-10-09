@@ -4,7 +4,7 @@ module Types
     field :tasks, [Types::TaskType], null: false,
       description: "tasks"
     def tasks
-      return Task.all.order(:id => :desc)
+      return Task.all.joins(:images,:users).eager_load(:images,:users).order(:id => :desc)
     end
 
     field :tasks_by_user, [Types::TaskType], null: false,
@@ -19,7 +19,7 @@ module Types
       argument :id, ID, required: true
     end
     def task(id:)
-      return Task.find id
+      return Task.joins(:images,:users).eager_load(:images,:users).order('images.created_at DESC').find(id)
     end
 
     field :task_images, [Types::MessageType], null: true do

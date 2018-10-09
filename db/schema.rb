@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_07_183914) do
+ActiveRecord::Schema.define(version: 2018_10_09_195114) do
+
+  create_table "images", force: :cascade do |t|
+    t.string "url"
+    t.integer "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_images_on_task_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string "text"
