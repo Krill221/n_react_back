@@ -72,3 +72,5 @@ gem "bcrypt", "~> 3.1"
 gem "koala", "~> 3.0"
 
 gem "exponent-server-sdk", "~> 0.0.5"
+
+gem "rack-cors", "~> 1.0"
