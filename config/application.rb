@@ -22,8 +22,11 @@ module NReactBack
 
     config.middleware.insert_before 0, Rack::Cors do
           allow do
-            origins '*'
-            resource '*', headers: :any, methods: [:get, :post, :options]
+            origins '0.0.0.0:3000', '127.0.0.1'
+            resource '*',
+             headers: :any,
+             methods: [:get, :post, :options],
+            credentials: true
           end
     end
 

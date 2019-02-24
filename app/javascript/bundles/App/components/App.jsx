@@ -7,9 +7,9 @@ import TaskPage from './TaskPage';
 
 
 const client = new ApolloClient({
-    //uri: 'http://localhost:3000/graphql',
-    uri: "https://mimonami.herokuapp.com/graphql",
-    //credentials: 'include'
+    uri: 'http://localhost:3000/graphql',
+    //uri: "https://mimonami.herokuapp.com/graphql",
+    credentials: 'include'
 });
 
 
