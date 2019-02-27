@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_09_195114) do
+ActiveRecord::Schema.define(version: 2019_02_27_150534) do
 
   create_table "images", force: :cascade do |t|
     t.string "url"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2018_10_09_195114) do
     t.string "password_digest"
     t.string "expo_push_token", default: ""
     t.string "image", default: ""
+    t.string "flat", default: ""
   end
 
 end
