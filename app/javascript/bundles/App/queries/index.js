@@ -6,6 +6,7 @@ export const GET_TASKS = gql`{
       name
       body
       uuid
+      likes
     }
 }`;
 
@@ -29,6 +30,7 @@ export const GET_TASK = gql`
       name
       body
       uuid
+      likes
     }
   }`;
 

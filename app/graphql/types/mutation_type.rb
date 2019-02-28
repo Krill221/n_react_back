@@ -7,6 +7,8 @@ module Types
     field :addMessage, mutation: Mutations::TaskMutations::AddMessage
     field :updateTask, mutation: Mutations::TaskMutations::UpdateTask
     field :addImage, mutation: Mutations::TaskMutations::AddImage
+    field :addLike, mutation: Mutations::TaskMutations::AddLike
+    field :removeLike, mutation: Mutations::TaskMutations::RemoveLike
 
 
     # PUSH

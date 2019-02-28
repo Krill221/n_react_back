@@ -19,6 +19,7 @@ export default class TaskTable extends React.Component {
                     <th>Id</th>
                     <th>Name</th>
                     <th>Body</th>
+                    <th>Likes</th>
                     <th>QR code</th>
                   </tr>
                 </thead>
@@ -27,6 +28,7 @@ export default class TaskTable extends React.Component {
                                 <td>{task.id}</td>
                                 <td>{task.name}</td>
                                 <td>{task.body}</td>
+                                <td>{task.likes}</td>
                                 <td><QRCode value={task.uuid} /></td>
                   </tr>
                 ) )}</tbody></Table>

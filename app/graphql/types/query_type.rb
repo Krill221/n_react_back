@@ -4,7 +4,7 @@ module Types
     field :tasks, [Types::TaskType], null: false,
       description: "tasks"
     def tasks
-      return Task.all.order(:id => :desc)
+      return Task.joins(:subscriptions).select('tasks.*, SUM(subscriptions.like) as likes').order(:id => :desc)
     end
 
     field :tasks_by_user, [Types::TaskType], null: false,
@@ -12,14 +12,15 @@ module Types
     def tasks_by_user
       return [] if context[:session][:token].nil?
       user = User.find context[:session][:token]
-      return user.tasks.order(:id => :desc)
+      return user.tasks.joins(:subscriptions).select('tasks.*, SUM(subscriptions.like) as likes').order(:id => :desc)
     end
 
     field :task, Types::TaskType, null: true do
       argument :id, ID, required: true
     end
     def task(id:)
-      return Task.includes(:images).eager_load(:images).order('images.created_at DESC').find(id)
+      return Task.joins(:subscriptions).select('tasks.*, SUM(subscriptions.like) as likes')
+      includes(:images).eager_load(:images).order('images.created_at DESC').find(id)
     end
 
     field :task_images, [Types::MessageType], null: true do
