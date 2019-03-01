@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2019_02_28_145129) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "images", force: :cascade do |t|
     t.string "url"
-    t.integer "task_id"
+    t.bigint "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_images_on_task_id"
@@ -22,20 +25,20 @@ ActiveRecord::Schema.define(version: 2019_02_28_145129) do
 
   create_table "messages", force: :cascade do |t|
     t.string "text"
-    t.integer "task_id"
+    t.bigint "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "contenttype", default: "txt"
     t.boolean "onserver", default: true
     t.string "time", default: ""
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["task_id"], name: "index_messages_on_task_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "task_id"
+    t.bigint "user_id"
+    t.bigint "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "like", default: 0
@@ -62,4 +65,9 @@ ActiveRecord::Schema.define(version: 2019_02_28_145129) do
     t.string "flat", default: ""
   end
 
+  add_foreign_key "images", "tasks"
+  add_foreign_key "messages", "tasks"
+  add_foreign_key "messages", "users"
+  add_foreign_key "subscriptions", "tasks"
+  add_foreign_key "subscriptions", "users"
 end
