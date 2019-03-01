@@ -8,7 +8,11 @@ module Mutations
      current_user = User.find context[:session][:token]
      subs = Subscription.where(:user_id => current_user.id, :task_id => taskid)
      unless subs.empty?
-       subs.first.update!(:like => 0)
+       if subs.first.like >= 0
+         subs.first.update!(:like => -1)
+       else
+         subs.first.update!(:like => 0)
+       end
      end
      return {id: taskid}
     end
