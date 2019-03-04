@@ -35,6 +35,7 @@ module NReactBack
     config.load_defaults 5.2
 
     config.time_zone = 'Moscow'
+    config.active_record.default_timezone = :local
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

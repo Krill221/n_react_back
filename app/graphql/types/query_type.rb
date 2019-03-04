@@ -12,7 +12,10 @@ module Types
     def tasks_by_user
       return [] if context[:session][:token].nil?
       user = User.find context[:session][:token]
-      return user.tasks.select('tasks.*,  sum(subscriptions.like) as my_like').group('tasks.id').order(:id => :desc)
+      return user.tasks
+        .joins('LEFT JOIN "messages" ON "messages"."task_id" = "tasks"."id"')
+        .select('tasks.*, max(subscriptions.like) as my_like, count(case when "messages"."created_at" > subscriptions.read_date then 1 else null end) as my_unreaded_msg_count, MAX(messages.created_at) as max_msg_date, MAX(subscriptions.read_date) as my_read_date')
+        .group('tasks.id').order(:id => :desc)
     end
 
     field :task, Types::TaskType, null: true do
@@ -35,6 +38,11 @@ module Types
       argument :taskid, ID, required: true
     end
     def messages(taskid:)
+      current_user = User.find context[:session][:token]
+      subs = Subscription.where(:user_id => current_user.id, :task_id => taskid)
+      unless subs.empty?
+        subs.first.update!(:read_date => DateTime.now )
+      end
       return Message.joins(:user).eager_load(:user).where(:task_id => taskid).order(:created_at => :asc)
     end
 

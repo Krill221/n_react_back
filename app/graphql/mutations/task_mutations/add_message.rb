@@ -36,6 +36,10 @@ module Mutations
         user_id: current_user.id
       )
      end
+     subs = Subscription.where(:user_id => current_user.id, :task_id => taskid)
+     unless subs.empty?
+       subs.first.update!(:read_date => DateTime.now )
+     end
 
      # send push to all subscribed users
      Task.find(taskid).users.each do |user|

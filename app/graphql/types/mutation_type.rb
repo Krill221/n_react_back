@@ -9,6 +9,8 @@ module Types
     field :addImage, mutation: Mutations::TaskMutations::AddImage
     field :addLike, mutation: Mutations::TaskMutations::AddLike
     field :removeLike, mutation: Mutations::TaskMutations::RemoveLike
+    field :addLike, mutation: Mutations::TaskMutations::AddLike
+    field :setReadDate, mutation: Mutations::TaskMutations::SetReadDate
 
 
     # PUSH
@@ -20,6 +22,5 @@ module Types
     field :singOut, mutation: Mutations::UserMutations::SingOut
     field :singIn, mutation: Mutations::UserMutations::SingIn
     field :singUp, mutation: Mutations::UserMutations::SingUp
-
   end
 end
