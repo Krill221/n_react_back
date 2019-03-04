@@ -10,18 +10,24 @@ export const GET_TASKS = gql`{
     }
 }`;
 
-/*
-export const GET_TASKS = gql`{
+
+/*export const GET_TASKS = gql`{
     tasksByUser {
       id
       name
       body
       uuid
+      myLike
+      likes
+      disLikes
+      myUnreadedMsgCount
+      images{
+        id
+        url
+      }
     }
 }`;
-
 */
-
 
 export const GET_TASK = gql`
   query Task($id: ID!) {
