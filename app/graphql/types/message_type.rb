@@ -7,5 +7,6 @@ module Types
     field :onserver, String, null: false
     field :time, String, null: false
     field :user, Types::UserType, null: false
+    field :unreaded, String , null: true
   end
 end

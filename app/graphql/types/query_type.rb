@@ -40,10 +40,12 @@ module Types
     def messages(taskid:)
       current_user = User.find context[:session][:token]
       subs = Subscription.where(:user_id => current_user.id, :task_id => taskid)
-      unless subs.empty?
-        subs.first.update!(:read_date => DateTime.now )
-      end
-      return Message.joins(:user).eager_load(:user).where(:task_id => taskid).order(:created_at => :asc)
+      read_date = subs.first.read_date
+      #unless subs.empty?
+      #  subs.first.update!(:read_date => DateTime.now )
+      #end
+      p read_date.to_s
+      return Message.preload(:user).select('messages.*, CASE WHEN messages.created_at > TIMESTAMP \''+read_date.to_s+'\' THEN 1 ELSE 0 END as unreaded').where(:task_id => taskid).order(:created_at => :asc)
     end
 
 

@@ -16,6 +16,7 @@ module Mutations
     field :onserver, String, null: false
     field :time, String, null: false
     field :user, Types::UserType, null: false
+    field :unreaded, String, null: false
 
 
     def resolve(taskid:, contenttype:, text:, tempimg:, onserver:)
@@ -35,11 +36,6 @@ module Mutations
         time: Time.now.strftime("%H:%M"),
         user_id: current_user.id
       )
-     end
-
-     subs = Subscription.where(:user_id => current_user.id, :task_id => taskid)
-     unless subs.empty?
-       subs.first.update!(:read_date => DateTime.now )
      end
 
      # send push to all subscribed users
@@ -63,7 +59,8 @@ module Mutations
        task_id: message.task_id,
        onserver: message.onserver.to_s,
        time: message.created_at.strftime("%H:%M"),
-       user: current_user
+       user: current_user,
+       unreaded: "0"
      }
     rescue ActiveRecord::RecordInvalid => e
      GraphQL::ExecutionError.new("Invalid input: #{e.record.errors.full_messages.join(', ')}")
