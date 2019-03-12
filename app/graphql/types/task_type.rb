@@ -4,6 +4,8 @@ module Types
     field :name, String, null: false
     field :body, String, null: false
     field :uuid, String, null: false
+    field :lat, String, null: false
+    field :lng, String, null: false
     field :my_like, String, null: false
     field :my_read_date, String, null: true
     field :max_msg_date, String, null: true

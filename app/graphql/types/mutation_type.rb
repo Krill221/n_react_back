@@ -11,6 +11,7 @@ module Types
     field :removeLike, mutation: Mutations::TaskMutations::RemoveLike
     field :addLike, mutation: Mutations::TaskMutations::AddLike
     field :setReadDate, mutation: Mutations::TaskMutations::SetReadDate
+    field :setCoord, mutation: Mutations::TaskMutations::SetCoord
 
 
     # PUSH
