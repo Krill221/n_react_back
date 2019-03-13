@@ -8,5 +8,6 @@ module Types
     field :time, String, null: false
     field :user, Types::UserType, null: false
     field :unreaded, String , null: true
+    field :deleted, String , null: true
   end
 end

@@ -5,6 +5,7 @@ module Types
     field :subscribeToTask, mutation: Mutations::TaskMutations::SubscribeToTask
     field :addTask, mutation: Mutations::TaskMutations::AddTask
     field :addMessage, mutation: Mutations::TaskMutations::AddMessage
+    field :removeMessage, mutation: Mutations::TaskMutations::RemoveMessage
     field :updateTask, mutation: Mutations::TaskMutations::UpdateTask
     field :addImage, mutation: Mutations::TaskMutations::AddImage
     field :addLike, mutation: Mutations::TaskMutations::AddLike

@@ -34,7 +34,8 @@ module Mutations
         contenttype: contenttype,
         task_id: taskid,
         time: Time.now.strftime("%H:%M"),
-        user_id: current_user.id
+        user_id: current_user.id,
+        deleted: false
       )
      end
 
