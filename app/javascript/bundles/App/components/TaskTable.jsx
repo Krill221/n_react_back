@@ -1,5 +1,4 @@
 import React from 'react';
-import { Table} from 'react-bootstrap';
 import {Query} from "react-apollo";
 import QRCode from "qrcode.react";
 
@@ -13,7 +12,7 @@ export default class TaskTable extends React.Component {
         if (loading) return <div>Loading...</div>;
         if (error) return <div>Error :(</div>;
 
-        return <Table striped bordered condensed hover>
+        return <table>
                 <thead>
                   <tr>
                     <th>Id</th>
@@ -31,7 +30,7 @@ export default class TaskTable extends React.Component {
                                 <td>{task.likes}</td>
                                 <td><QRCode value={task.uuid} /></td>
                   </tr>
-                ) )}</tbody></Table>
+                ) )}</tbody></table>
       }}
     </Query>
 
