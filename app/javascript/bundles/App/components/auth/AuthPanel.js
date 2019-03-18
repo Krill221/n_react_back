@@ -3,7 +3,7 @@ import {Query} from "react-apollo";
 import {CURRENT_USER_TOKEN,CURRENT_EXPO_PUSH_TOKEN_STATE } from "../../queries/auth";
 import SingInServer from "./SingInServer";
 import SingUpServer from "./SingUpServer";
-import SingOutServer from "./SingOutServer";
+import SingOutButton from "./SingOutButton";
 import SingInFacebook from "./SingInFacebook";
 import SingInVK from "./SingInVK";
 
@@ -28,7 +28,7 @@ const AuthPanel = () => (
               return <div>expo token</div>
             }}
           </Query>
-        <SingOutServer />
+        <SingOutButton />
       </div>;
     }
   }

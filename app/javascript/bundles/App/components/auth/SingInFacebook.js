@@ -38,7 +38,7 @@ class SingInFacebook extends React.Component {
         fields="name,email,picture"
         onClick={this.componentClicked}
         callback={this.responseFacebook}
-        render={renderProps => (<button onClick={renderProps.onClick}>LOGIN WITH FB</button>
+        render={renderProps => (<button className={this.props.className} onClick={renderProps.onClick}>LOGIN WITH FB</button>
   )} />);
 
     if(this.state.isLoggedIn){
@@ -49,6 +49,7 @@ class SingInFacebook extends React.Component {
               refetchQueries: [{query: CURRENT_USER_TOKEN}]
             })
             //return <div>{this.state.name}</div>;
+            this.props.onSuccess();
             return <div>fb</div>;
           }}
         </ApolloConsumer>)

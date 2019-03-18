@@ -3,18 +3,16 @@ import {Mutation} from 'react-apollo';
 import {SING_OUT, CURRENT_USER_TOKEN} from "../../queries/auth";
 
 
-const SingOutServer = () => {
+const SingOutButton = (props) => {
   return (
     <Mutation mutation={SING_OUT} refetchQueries={[{query: CURRENT_USER_TOKEN}]}>
       { (SingOut) => (
-        <div>
-            <button onClick={ () => SingOut({ variables: {id: '' } }) } >
-              SingOut
-            </button>
-        </div>
+        <button className={props.className} onClick={ () => SingOut({ variables: {id: '' } }) } >
+          SingOut
+        </button>
       )}
     </Mutation>
   );
 };
 
-export default SingOutServer
+export default SingOutButton;

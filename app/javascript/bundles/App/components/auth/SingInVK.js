@@ -35,7 +35,7 @@ class SingInVK extends React.Component {
   render() {
 
 
-    let content = (<VkAuth apiId="6681159" callback={this.responseVK} >
+    let content = (<VkAuth className={this.props.className} apiId="6681159" callback={this.responseVK} >
       LOGIN WITH VK
     </VkAuth>);
 
@@ -50,6 +50,7 @@ class SingInVK extends React.Component {
               refetchQueries: [{query: CURRENT_USER_TOKEN}]
             });
             //return <div>{this.state.name}</div>;
+            this.props.onSuccess();
             return <div>vk</div>;
           }}
         </ApolloConsumer>)
