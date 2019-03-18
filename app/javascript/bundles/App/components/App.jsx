@@ -1,7 +1,7 @@
 import React from 'react';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo"
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Navigation from './Navigation';
 import TaskPage from './TaskPage';
@@ -21,10 +21,14 @@ export default class App extends React.Component {
     return (<ApolloProvider client={client}>
             <Router>
               <div>
+                <header className="mb-5">
                 <Navigation />
-                <Route exact path="/" component={TaskPage} />
-                <Route path="/singIn" component={SingIn} />
-                <Route path="/singUp" component={SingUp} />
+                </header>
+                <main role="main" className="">
+                  <Route exact path="/" component={TaskPage} />
+                  <Route path="/singIn" component={SingIn} />
+                  <Route path="/singUp" component={SingUp} />
+                </main>
               </div>
             </Router>
       </ApolloProvider>

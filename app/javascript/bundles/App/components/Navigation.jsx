@@ -7,8 +7,7 @@ import SingOutButton from "./auth/SingOutButton";
 export default class Navigation extends React.Component {
 
   render() {
-    return (
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+    return (<nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a className="navbar-brand" href="/">Mimonami</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
