@@ -12,7 +12,7 @@ export default class TaskTable extends React.Component {
         if (loading) return <div>Loading...</div>;
         if (error) return <div>Error :(</div>;
 
-        return <table>
+        return <table className="table table-striped table-sm my-3 mt-5 rounded shadow-sm">
                 <thead>
                   <tr>
                     <th>Id</th>

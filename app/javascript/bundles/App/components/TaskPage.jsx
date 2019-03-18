@@ -5,12 +5,12 @@ import TaskAdd from './TaskAdd';
 export default class TaskPage extends React.Component {
 
   render() {
-    return (<div>
-              <main>
+    return (<main>
+              <div className="container">
                 <TaskAdd />
                 <TaskTable />
-              </main>
-            </div>
-          );
+              </div>
+            </main>
+    );
   }
 }
