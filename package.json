@@ -7,6 +7,7 @@
     "@rails/webpacker": "https://github.com/rails/webpacker.git",
     "apollo-boost": "^0.1.16",
     "apollo-client": "^2.5.1",
+    "array-each-slice": "^1.0.1",
     "graphql": "14.1.1",
     "graphql-tag": "^2.10.1",
     "prop-types": "^15.6.2",

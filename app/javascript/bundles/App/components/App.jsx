@@ -20,10 +20,8 @@ export default class App extends React.Component {
   render() {
     return (<ApolloProvider client={client}>
             <Router>
-              <div>
-                <header className="mb-5">
+              <div style={{paddingTop: '3.5rem'}}>
                 <Navigation />
-                </header>
                 <main role="main" className="">
                   <Route exact path="/" component={TaskPage} />
                   <Route path="/singIn" component={SingIn} />
