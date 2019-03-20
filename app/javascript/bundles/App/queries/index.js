@@ -7,6 +7,9 @@ export const GET_TASKS = gql`{
       body
       uuid
       likes
+      images{
+        url
+      }
     }
 }`;
 
