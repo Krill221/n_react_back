@@ -3,6 +3,7 @@ import {Query} from "react-apollo";
 import QRCode from "qrcode.react";
 import 'array-each-slice';
 import { GET_TASKS } from '../queries';
+import YandexPayButton from './elements/YandexPayButton'
 
 export default class TaskCards2 extends React.Component {
 
@@ -45,6 +46,7 @@ export default class TaskCards2 extends React.Component {
                          <div className="btn-group">
                            <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
                            <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                           <YandexPayButton className="btn btn-sm btn-outline-secondary" name="Pay 2" sum="2" payId="" />
                          </div>
                          <small className="text-muted">Likes {task.likes}</small>
                        </div>

@@ -18,7 +18,6 @@ class SingInVK extends React.Component {
   }
 
   responseVK = (response) => {
-    console.log(response);
     this.setState({
       isLoggedIn: true,
       userId: response.res.session.mid,
