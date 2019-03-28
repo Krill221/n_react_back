@@ -1,0 +1,30 @@
+Raspberry
+to find raspberry: Angry IP scanner
+ssh pi@192.168.x.y
+password raspberry
+change pass: passwd
+sudo apt-get update
+sudo apt-get upgrade
+shutdown -h now
+
+
+Raspberry Pi Camera module
+sudo raspi-config
+Select Enable camera and hit Enter, then go to Finish and you'll be prompted to reboot.
+
+
+// INSTALL FFMPEG
+sudo apt-get install libomxil-bellagio-dev
+wget -O ffmpeg.tar.bz2 https://ffmpeg.org/releases/ffmpeg-snapshot-git.tar.bz2
+tar xvjf ffmpeg.tar.bz2
+cd ffmpeg
+sudo ./configure --arch=arm --target-os=linux --enable-gpl --enable-omx --enable-omx-rpi --enable-nonfree
+Run sudo make -j$(grep -c ^processor /proc/cpuinfo)
+sudo make install
+Delete the FFmpeg directory and tar file that were created during the download process in Step 1. FFmpeg has been installed so they are no longer needed.
+
+npm install raspi-live -g
+raspi-live --help
+
+to start:
+raspi-live start -t 1 -l 12 -s 50

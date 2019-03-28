@@ -24,6 +24,7 @@ export default class TaskCards2 extends React.Component {
                             <li data-target={"#myCarousel"+task.id} data-slide-to={index} key={index} className={index == 0 ? "active" : ""}></li>
                           )}
                           <li data-target={"#myCarousel"+task.id} data-slide-to={task.images.length} className=""></li>
+                          <li data-target={"#myCarousel"+task.id} data-slide-to={task.images.length+1} className=""></li>
                         </ol>
                         <div className="carousel-inner bg-dark">
                           {task.images && task.images.map( (image, index) => (
@@ -37,6 +38,11 @@ export default class TaskCards2 extends React.Component {
                             <div className="card-img-top" style={{textAlign: 'center', height: 225, width: '100%', display: 'block'}}>
                               <QRCode value={task.uuid} size={150}/>
                              </div>
+                          </div>
+                          <div className="carousel-item">
+                            <video style={{height: 225, width: '100%', display: 'block'}} controls>
+                                <source src="http://172.16.59.92:8080/camera/livestream.m3u8" type="application/x-mpegURL" />
+                            </video>
                           </div>
                         </div>
                      </div>
