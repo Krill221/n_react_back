@@ -7,6 +7,28 @@ sudo apt-get update
 sudo apt-get upgrade
 shutdown -h now
 
+WIFI CONFIGURATION
+iwconfig
+sudo iwlist wlan0 scan | grep ESSID
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+пропускаем первые две строчки:
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+Добавляем
+network={
+        ssid="YourSSID"
+        psk="password"
+        key_mgmt=WPA-PSK
+}
+Если используется WEP, то:
+network={
+        ssid="YourSSID"
+        wep_key0="password12345"
+        key_mgmt=NONE
+}
+sudo reboot
+ifconfig -a
+
 
 Raspberry Pi Camera module
 sudo raspi-config
@@ -28,3 +50,5 @@ raspi-live --help
 
 to start:
 raspi-live start -t 1 -l 12 -s 50
+OR (in background with stdout dev null) :
+raspi-live start -t 1 -l 12 -s 50 &>/dev/null &
