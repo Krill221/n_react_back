@@ -2,6 +2,8 @@ import React from 'react';
 import TaskTable from './TaskTable';
 import TaskCards2 from './TaskCards2';
 import TaskAdd from './TaskAdd';
+import WebGl from './modules/WebGl';
+
 
 export default class TaskPage extends React.Component {
 
@@ -16,6 +18,7 @@ export default class TaskPage extends React.Component {
       <div className="container">
           <TaskAdd />
           <TaskCards2 />
+          <WebGl />
       </div>
       </div>
     );

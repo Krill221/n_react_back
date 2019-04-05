@@ -3,7 +3,7 @@ import {Query} from "react-apollo";
 import QRCode from "qrcode.react";
 import 'array-each-slice';
 import { GET_TASKS } from '../queries';
-import YandexPayButton from './elements/YandexPayButton'
+import YandexPayButton from './modules/YandexPayButton'
 
 export default class TaskCards2 extends React.Component {
 

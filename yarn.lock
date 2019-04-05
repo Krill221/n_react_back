@@ -2680,7 +2680,7 @@ faye-websocket@~0.11.1:
   dependencies:
     websocket-driver ">=0.5.1"
 
-fbjs@^0.8.0:
+fbjs@^0.8.0, fbjs@^0.8.16:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -5592,6 +5592,23 @@ react-router@^4.4.0:
     react-is "^16.6.0"
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
+
+react-unity-webgl@^7.0.9:
+  version "7.0.9"
+  resolved "https://registry.yarnpkg.com/react-unity-webgl/-/react-unity-webgl-7.0.9.tgz#a2f793d6578b98c393330b73e62e2de29037e719"
+  integrity sha512-B+aio7eOpvPWQNGe+96hn/RetyxKAw8xhLzYdN3dVxMBtLnd2EQI9f7/fQUKMefcMyb2CaYA/QhgRs6stUvx2w==
+  dependencies:
+    react "16.4.1"
+
+react@16.4.1:
+  version "16.4.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.4.1.tgz#de51ba5764b5dbcd1f9079037b862bd26b82fe32"
+  integrity sha512-3GEs0giKp6E0Oh/Y9ZC60CmYgUPnp7voH9fbjWsvXtYFb4EWtgQub0ADSq0sJR0BbHc4FThLLtzlcFaFXIorwg==
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
 
 react@^16.5.1:
   version "16.5.1"
